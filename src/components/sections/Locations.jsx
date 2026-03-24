@@ -3,19 +3,20 @@ import SectionWrapper from "../ui/SectionWrapper.jsx";
 import LocationCard from "../ui/LocationCard.jsx";
 import { locations, nearbyHotels } from "../../data/locations.js";
 import { makePlaceholder } from "../../lib/placeholders.js";
+import { fadeUp, slideInLeft, slideInRight } from "../../lib/animations.js";
 
 const mapFallback = makePlaceholder("Meru County Map", 1200, 700);
 const locationImages = {
-  meru: makePlaceholder("location-main.jpg", 800, 600),
-  kaaga: makePlaceholder("location-kaaga.jpg", 800, 600),
-  mugeene: makePlaceholder("location-mugeene.jpg", 800, 600),
+  meru: "/location-main.png",
+  kaaga: "/location-kaaga.png",
+  mugeene: "/location-mugeene.png",
 };
 
 export default function Locations() {
   return (
     <SectionWrapper id="locations">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <div>
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <p className="text-sm uppercase tracking-[0.3em] text-brown/70">
             Locations
           </p>
@@ -26,11 +27,17 @@ export default function Locations() {
             Visit our flagship clinic or choose the branch closest to you. Every
             location offers the same standard of care and welcoming experience.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="relative overflow-hidden rounded-3xl border border-rose/40 shadow-soft">
+        <motion.div
+          variants={slideInLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-3xl border border-rose/40 shadow-soft"
+        >
           <iframe
             title="Aesderm locations map"
             src="https://www.google.com/maps?q=Meru%2C%20Kenya&output=embed"
@@ -43,8 +50,14 @@ export default function Locations() {
             alt="Map of Meru County"
             className="hidden"
           />
-        </div>
-        <div className="rounded-3xl border border-rose/40 bg-white p-6 shadow-soft">
+        </motion.div>
+        <motion.div
+          variants={slideInRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="rounded-3xl border border-rose/40 bg-white p-6 shadow-soft"
+        >
           <h3 className="font-display text-xl text-brown">Nearby Accommodation</h3>
           <ul className="mt-4 space-y-2 text-sm text-charcoal/75">
             {nearbyHotels.map((hotel) => (
@@ -55,7 +68,7 @@ export default function Locations() {
             Ask our team for assistance with preferred partner rates and travel
             guidance.
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="mt-12 grid gap-6 md:grid-cols-3">

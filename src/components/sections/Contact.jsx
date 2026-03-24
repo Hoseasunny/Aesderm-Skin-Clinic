@@ -3,6 +3,8 @@ import SectionWrapper from "../ui/SectionWrapper.jsx";
 import Input from "../ui/Input.jsx";
 import Button from "../ui/Button.jsx";
 import useForm from "../../hooks/useForm.js";
+import { motion } from "framer-motion";
+import { fadeUp, slideInLeft, slideInRight } from "../../lib/animations.js";
 
 export default function Contact() {
   const { values, errors, isSubmitting, isSubmitted, handleChange, handleSubmit } =
@@ -12,14 +14,20 @@ export default function Contact() {
   return (
     <SectionWrapper id="contact" className="bg-cream">
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <p className="text-sm uppercase tracking-[0.3em] text-brown/70">
+        <motion.div
+          variants={slideInLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.p variants={fadeUp} className="text-sm uppercase tracking-[0.3em] text-brown/70">
             Contact
-          </p>
-          <h2 className="mt-3 font-display text-3xl text-brown md:text-4xl">
+          </motion.p>
+          <motion.h2 variants={fadeUp} className="mt-3 font-display text-3xl text-brown md:text-4xl">
             Begin Your Skin Journey Today
-          </h2>
-          <form
+          </motion.h2>
+          <motion.form
+            variants={fadeUp}
             onSubmit={handleSubmit}
             className="mt-8 space-y-4 rounded-3xl border border-rose/40 bg-white p-6 shadow-soft"
           >
@@ -108,9 +116,15 @@ export default function Contact() {
                 We'll contact you within 24 hours to confirm.
               </div>
             ) : null}
-          </form>
-        </div>
-        <div className="rounded-3xl border border-rose/40 bg-beige/60 p-8 shadow-soft lg:border-l-4 lg:border-gold/30">
+          </motion.form>
+        </motion.div>
+        <motion.div
+          variants={slideInRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="rounded-3xl border border-rose/40 bg-beige/60 p-8 shadow-soft lg:border-l-4 lg:border-gold/30"
+        >
           <h3 className="font-display text-2xl text-brown">
             Contact Information
           </h3>
@@ -140,7 +154,7 @@ export default function Contact() {
               directed to the nearest hospital.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </SectionWrapper>
   );

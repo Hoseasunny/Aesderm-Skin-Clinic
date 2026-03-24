@@ -4,12 +4,12 @@ import SectionWrapper from "../ui/SectionWrapper.jsx";
 import ServiceCard from "../ui/ServiceCard.jsx";
 import BeforeAfterSlider from "../ui/BeforeAfterSlider.jsx";
 import { serviceTabs } from "../../data/services.js";
-import { makePlaceholder } from "../../lib/placeholders.js";
+import { fadeUp, slideInLeft, slideInRight, staggerContainer } from "../../lib/animations.js";
 
 const tabImages = {
-  medical: makePlaceholder("service-medical.jpg", 900, 700),
-  aesthetic: makePlaceholder("service-aesthetic.jpg", 900, 700),
-  skincare: makePlaceholder("service-skincare.jpg", 900, 700),
+  medical: "/service-medical.png",
+  aesthetic: "/service-aesthetic.png",
+  skincare: "/service-skincare.png",
 };
 
 export default function Services() {
@@ -18,7 +18,7 @@ export default function Services() {
   return (
     <SectionWrapper id="services" className="bg-beige/60">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <div>
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <p className="text-sm uppercase tracking-[0.3em] text-brown/70">
             Services
           </p>
@@ -29,10 +29,16 @@ export default function Services() {
             Explore medical, aesthetic, and rejuvenation treatments curated for
             Meru County's diverse skin needs.
           </p>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="mt-10 flex flex-wrap gap-3">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mt-10 flex flex-wrap gap-3"
+      >
         {serviceTabs.map((tab) => (
           <button
             key={tab.id}
@@ -47,10 +53,16 @@ export default function Services() {
             {tab.label}
           </button>
         ))}
-      </div>
+      </motion.div>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-6">
+        <motion.div
+          variants={slideInLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="space-y-6"
+        >
           <p className="text-sm uppercase tracking-[0.2em] text-brown/70">
             {activeTab.description}
           </p>
@@ -64,12 +76,25 @@ export default function Services() {
               className="grid gap-4 md:grid-cols-2"
             >
               {activeTab.items.map((item) => (
-                <ServiceCard key={item.title} title={item.title} text={item.text} />
+                <motion.div
+                  key={item.title}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <ServiceCard title={item.title} text={item.text} />
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
-        </div>
-        <div className="relative">
+        </motion.div>
+        <motion.div
+          variants={slideInRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="relative"
+        >
           <motion.img
             key={activeTab.id}
             initial={{ opacity: 0 }}
@@ -80,11 +105,17 @@ export default function Services() {
             className="h-full max-h-[520px] w-full rounded-3xl object-cover shadow-soft"
             loading="lazy"
           />
-        </div>
+        </motion.div>
       </div>
 
-      <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
-        <div className="space-y-4">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center"
+      >
+        <motion.div variants={fadeUp} className="space-y-4">
           <h3 className="font-display text-2xl text-brown">
             Real results, thoughtfully guided.
           </h3>
@@ -93,9 +124,11 @@ export default function Services() {
             achieving visible improvements. The before/after slider is a
             placeholder for real client outcomes.
           </p>
-        </div>
-        <BeforeAfterSlider />
-      </div>
+        </motion.div>
+        <motion.div variants={fadeUp}>
+          <BeforeAfterSlider />
+        </motion.div>
+      </motion.div>
     </SectionWrapper>
   );
 }

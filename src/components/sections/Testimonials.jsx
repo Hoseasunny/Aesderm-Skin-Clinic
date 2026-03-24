@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import SectionWrapper from "../ui/SectionWrapper.jsx";
 import TestimonialCard from "../ui/TestimonialCard.jsx";
 import { testimonials } from "../../data/testimonials.js";
+import { fadeUp } from "../../lib/animations.js";
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
@@ -16,16 +17,28 @@ export default function Testimonials() {
 
   return (
     <SectionWrapper id="testimonials" className="bg-beige/40">
-      <div className="text-center">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="text-center"
+      >
         <p className="text-sm uppercase tracking-[0.3em] text-brown/70">
           Testimonials
         </p>
         <h2 className="mt-3 font-display text-3xl text-brown md:text-4xl">
           Stories of Transformation
         </h2>
-      </div>
+      </motion.div>
 
-      <div className="mt-12">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mt-12"
+      >
         <div className="relative mx-auto max-w-3xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -51,7 +64,7 @@ export default function Testimonials() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }
