@@ -3,7 +3,7 @@ import { makePlaceholder } from "../../lib/placeholders.js";
 import { Link } from "react-router-dom";
 import Button from "../ui/Button.jsx";
 
-const heroImage = makePlaceholder("hero-consultation.jpg", 1200, 900);
+const heroImage = "/hero.jpg";
 
 export default function Hero() {
   const { scrollY } = useScroll();

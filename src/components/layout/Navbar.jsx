@@ -33,13 +33,20 @@ export default function Navbar() {
         }`}
       >
         <div className="section-padding mx-auto flex h-20 max-w-6xl items-center justify-between">
-          <Link to="/#home" className="flex items-center gap-2">
-            <span className="rounded-full bg-gold/20 px-3 py-1 font-display text-sm text-brown">
-              Aesderm
-            </span>
-            <span className="hidden text-sm text-charcoal/70 md:inline">
-              Skin Clinic
-            </span>
+          <Link to="/#home" className="flex items-center gap-3">
+            <img
+              src="/logo-skin-care.jpg"
+              alt="Aesderm Skin Clinic logo"
+              className="h-10 w-10 rounded-full object-cover ring-1 ring-gold/30"
+            />
+            <div className="leading-tight">
+              <span className="block font-display text-sm text-brown">
+                Aesderm
+              </span>
+              <span className="hidden text-xs text-charcoal/70 md:block">
+                Skin Clinic
+              </span>
+            </div>
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (

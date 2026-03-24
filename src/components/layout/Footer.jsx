@@ -6,7 +6,16 @@ export default function Footer() {
       <div className="section-padding mx-auto max-w-6xl py-16">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <h3 className="font-display text-xl text-gold">Aesderm Skin Clinic</h3>
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo-skin-care.jpg"
+                alt="Aesderm Skin Clinic logo"
+                className="h-10 w-10 rounded-full object-cover ring-1 ring-gold/30"
+              />
+              <h3 className="font-display text-xl text-gold">
+                Aesderm Skin Clinic
+              </h3>
+            </div>
             <p className="mt-4 text-sm text-cream/70">
               Where Science Meets Beauty. Premium dermatology and aesthetic care
               rooted in trust and community.
