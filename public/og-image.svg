@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#FAF9F6" />
+  <circle cx="220" cy="160" r="120" fill="#E8D5D0" opacity="0.7" />
+  <circle cx="980" cy="520" r="180" fill="#D4AF37" opacity="0.15" />
+  <text x="120" y="280" font-size="64" font-family="Playfair Display, serif" fill="#3D2817">Aesderm Skin Clinic</text>
+  <text x="120" y="360" font-size="32" font-family="Inter, sans-serif" fill="#2C2C2C">Where Science Meets Beauty</text>
+</svg>

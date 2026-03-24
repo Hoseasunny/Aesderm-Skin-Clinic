@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-charcoal font-body antialiased;
+}
+
+.glass-nav {
+  backdrop-filter: blur(18px);
+  background: rgba(250, 249, 246, 0.86);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.section-padding {
+  @apply px-5 sm:px-8 lg:px-12;
+}
+
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #d4af37;
+  transition: width 0.25s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+.active-underline::after {
+  width: 100%;
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.7s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-shape {
+  background: radial-gradient(circle at 30% 20%, rgba(232, 213, 208, 0.55), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(212, 175, 55, 0.15), transparent 45%);
+}
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+}
